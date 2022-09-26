@@ -49,4 +49,14 @@ class abb:
                 contador+=1
                 self.level(elemento,raiz.getsigde(),contador)
     def hoja(self,elemento,raiz):
-            
+        if self.vacia(raiz):
+            return False
+        elif raiz.getelem()==elemento:
+            if raiz.getsigde().getelem()==None and raiz.getsigiz().getelem()==None:
+                return True
+            else:
+                return False
+        elif elemento<raiz.getelem():
+            self.search(elemento,raiz.getsigiz())
+        elif elemento>raiz.gerelem():
+            self.search(elemento,raiz.getsigde())
