@@ -4,15 +4,15 @@ from Nodo import Nodo
 class abb:
     __raiz=Nodo
     
-    def vacia(self):
-        return self.__raiz.getelem==None
+    def vacia(self,raiz):
+        return raiz.getelem==None
     
     def getraiz(self):
         return self.__raiz
     
     def set(self,elemento,raiz):
         aux=raiz
-        if raiz.vacia():
+        if raiz.vacia(raiz):
             aux.getelem(elemento)
         elif elemento<aux.getelem():
             if aux.getsigiz()==None:                
@@ -27,7 +27,7 @@ class abb:
         return
     
     def search(self,elemento,raiz):
-        if self.vacia():
+        if self.vacia(raiz):
             return False
         elif raiz.getelem()==elemento:
             return True
@@ -35,13 +35,18 @@ class abb:
             self.search(elemento,raiz.getsigiz())
         elif elemento>raiz.gerelem():
             self.search(elemento,raiz.getsigde())
-    def level(self,elemento,raiz):
-        if self.vacia():
-            return 0
+    def level(self,elemento,raiz,contador):
+        if self.vacia(raiz):
+            contador=0
+            return contador
         elif raiz.getelem()==elemento:
-            return True
-        elif elemento<raiz.getelem():
-            self.search(elemento,raiz.getsigiz())
-        elif elemento>raiz.gerelem():
-            self.search(elemento,raiz.getsigde())
+            return contador+1
+        else:
+            if raiz.getelem()>elemento:
+                contador+=1
+                self.level(elemento,raiz.getsigiz(),contador)
+            else:
+                contador+=1
+                self.level(elemento,raiz.getsigde(),contador)
+    def hoja(self,elemento,raiz):
             
