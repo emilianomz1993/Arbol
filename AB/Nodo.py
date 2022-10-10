@@ -27,4 +27,3 @@ class Nodo:
     
     def getelem(self):
         return self.__elemento
-    

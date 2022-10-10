@@ -1,3 +1,4 @@
+
 from pickle import FALSE
 from Nodo import Nodo
 
@@ -30,11 +31,12 @@ class abb:
         if self.vacia(raiz):
             return False
         elif raiz.getelem()==elemento:
-            return True
+            return raiz
         elif elemento<raiz.getelem():
             self.search(elemento,raiz.getsigiz())
         elif elemento>raiz.gerelem():
             self.search(elemento,raiz.getsigde())
+
     def level(self,elemento,raiz,contador):
         if self.vacia(raiz):
             contador=0
@@ -48,7 +50,8 @@ class abb:
             else:
                 contador+=1
                 self.level(elemento,raiz.getsigde(),contador)
-    def hoja(self,elemento,raiz):
+
+    def sheet(self,elemento,raiz):
         if self.vacia(raiz):
             return False
         elif raiz.getelem()==elemento:
@@ -60,3 +63,36 @@ class abb:
             self.search(elemento,raiz.getsigiz())
         elif elemento>raiz.gerelem():
             self.search(elemento,raiz.getsigde())
+
+    def son(self,hijo,padre):
+        aux=self.search(padre,self.__raiz)
+        if aux.getsigde().getelem()==hijo or aux.getsigiz().hijo
+            return True
+        else
+            return False
+
+    def father(self,hijo,padre):
+        aux=self.search(padre,self.__raiz)
+        if aux.getsigde().getelem()==hijo or aux.getsigiz().hijo
+            return True
+        else
+            return False
+
+    def inorden(self, nodo):
+
+        if nodo is not None:
+            self.inorden(nodo.getsigiz)
+            print(nodo.getelem, end=", ")
+            self.inorden(nodo.getsigde)
+
+    def preorden(self, nodo):
+        if nodo is not None:
+            print(nodo.getelem, end=", ")
+            self.preorden(nodo.getsigiz)
+            self.__preorden_recursivo(nodo.getsigde)
+
+    def __postorden_recursivo(self, nodo):
+        if nodo is not None:
+            self.__postorden_recursivo(nodo.getsigiz)
+            self.__postorden_recursivo(nodo.getsigde)
+            print(nodo.getelem, end=", ")
